@@ -538,6 +538,7 @@ class ChildReportListController extends CI_Controller {
     }
             
     public function transactionReport()
+
     {
         $service =  $this->Access_model->showAdminService();
         $loginstatus   = $this->session->userdata('logged_in'); 
@@ -548,9 +549,20 @@ class ChildReportListController extends CI_Controller {
 
 
         $parentName = $this->ChildReportListModel->parentName($parent_id);
-        $parentList = $this->Signup_model->parentName();
+
+
+
+
+        // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
+        $parentList = $this->Signup_model->parentName($parent_id);
+         // print_r($parentList); die;
+
+
+
+
          $childName = $this->ChildReportListModel->allChild($parent_id);
          $discount = $this->ChildReportListModel->discount($parent_id);
+
 
 
 
@@ -566,12 +578,16 @@ class ChildReportListController extends CI_Controller {
         }
 
        // print_r($locid); die;
+        // print_r($allParent); die;
 
         $childItem = $this->ChildReportListModel->transactionReport($parent_id,$allChild, $locid['0']['locid']);
 
       //  print_r($childItem); die;
         $allChildName = $this->ChildReportListModel->allChildName($allParent);
 
+    //  echo count($allChildName); die;
+
+        //print_r($allChildName); die;
 
         $allParentChild = array();
         for($i=0;$i<count($allChildName);$i++)
@@ -581,6 +597,7 @@ class ChildReportListController extends CI_Controller {
 
         $parentItem = $this->ChildReportListModel->parentitemName($allParent,$allParentChild,$locid['0']['locid']);
 
+        //print_r($parentItem); die;
 
         if($info['type']=='Business Manager')
         {
@@ -606,7 +623,17 @@ class ChildReportListController extends CI_Controller {
       
       //  print_r($loginstatus); die;
         $parentName = $this->ChildReportListModel->parentName($parent_id);
-        $parentList = $this->Signup_model->parentName();
+
+
+
+
+        // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
+        $parentList = $this->Signup_model->parentName($parent_id);
+
+
+
+
+
        
         $childName = $this->ChildReportListModel->allChild($parent_id);
       
@@ -764,7 +791,18 @@ class ChildReportListController extends CI_Controller {
 
 
         $parentName = $this->ChildReportListModel->parentName($parent_id);
-        $parentList = $this->Signup_model->parentName();
+
+
+
+
+
+        // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
+        $parentList = $this->Signup_model->parentName($parent_id);
+
+
+
+
+
          $childName = $this->ChildReportListModel->allChild($parent_id);
          $discount = $this->ChildReportListModel->discount($parent_id);
 

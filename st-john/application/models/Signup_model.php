@@ -409,12 +409,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-            public function parentName()
+            public function parentName($parent_id)
             {
 
             // $sql = "select id,first_name,mother_name,email,phone,status from person_details where parent_id = '0' and type = 'Parent' "; 
 
-             $sql = "select id,concat(first_name, ' ', last_name) as `first_name`,CONCAT(mother_name,' ',mother_last_name) as mother_name,email,phone,status from person_details where parent_id = '0' and type = 'Parent' Group by first_name,mother_name"; 
+
+              //id = '$parent_id' and 
+
+             $sql = "select id,concat(first_name, ' ', last_name) as `first_name`,CONCAT(mother_name,' ',mother_last_name) as mother_name,email,phone,status from person_details where id = '$parent_id' and parent_id = '0' and type = 'Parent' Group by first_name,mother_name"; 
                        $sql1 = $this->db->query($sql); 
 
                        return $sql1->result_array();
