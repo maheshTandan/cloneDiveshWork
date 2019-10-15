@@ -4,12 +4,7 @@
   <script type="text/javascript">
     
     $(document).ready(function() {
-    $('#dataTables-example').DataTable({
-        lengthMenu: [
-            [ 100, 250, 500, -1 ],
-            [ '100', '250', '500', 'Show all' ]
-        ]
-    });
+    $('#dataTables-example').DataTable();
 } );
 </script>      
 

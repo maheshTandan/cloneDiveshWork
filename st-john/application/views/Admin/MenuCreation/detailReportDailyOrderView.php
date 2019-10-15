@@ -14,11 +14,7 @@
 	
 $(document).ready(function() {
     $('#dataTables-example').DataTable({
-        lengthMenu: [
-            [ 100, 250, 500, -1 ],
-            [ '100', '250', '500', 'Show all' ]
-        ],
-        dom: 'lBfrtip',
+        dom: 'Bfrtip',
         buttons: [
             {extend: 'csv', title: 'Daily Details Order Report'}, {extend: 'excel', title: 'Daily Details Order Report'}, {extend: 'pdf', title: 'Daily Details Order Report'}, { extend: 'print', title: 'Daily Details Order Report'}
         ]

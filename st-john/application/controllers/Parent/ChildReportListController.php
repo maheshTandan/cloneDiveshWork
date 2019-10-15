@@ -554,7 +554,7 @@ class ChildReportListController extends CI_Controller {
 
 
         // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
-        $parentList = $this->Signup_model->parentName($parent_id);
+        $parentList = $this->Signup_model->parentName1($parent_id);
          // print_r($parentList); die;
 
 
@@ -628,7 +628,7 @@ class ChildReportListController extends CI_Controller {
 
 
         // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
-        $parentList = $this->Signup_model->parentName($parent_id);
+        $parentList = $this->Signup_model->parentName1($parent_id);
 
 
 
@@ -797,7 +797,7 @@ class ChildReportListController extends CI_Controller {
 
 
         // HERE I MAKE CHANGES AND SELECT ONLY ACTIVE PARENT ID  27/09/2019 
-        $parentList = $this->Signup_model->parentName($parent_id);
+        $parentList = $this->Signup_model->parentName1($parent_id);
 
 
 

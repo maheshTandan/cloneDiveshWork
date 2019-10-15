@@ -13,7 +13,6 @@
 $(document).ready(function() {
     $('#dataTables-example').DataTable({
         dom: 'Bfrtip',
-        "bPaginate": false,
         buttons: [
             {extend: 'csv', title: 'Monthly Order Report'}, {extend: 'excel', title: 'Monthly Order Report'}, {extend: 'pdf', title: 'Monthly Order Report'}, { extend: 'print', title: 'Monthly Order Report'}
 

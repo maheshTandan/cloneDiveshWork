@@ -3,18 +3,18 @@
 <?= link_tag('application/css/montlyCal.css'); ?>
 
 <script type="text/javascript">
-	 $(document).ready(function(){
+   $(document).ready(function(){
 
      var selectedChild = $(".childId option:selected").val();
+     var selectedDrink = $("#drinktype option:selected").val();
+     var selectedDrinkText = $("#drinktype option:selected").text();
+
      var selectedMilk = $("#milktype option:selected").val();
      var selectedMilkText = $("#milktype option:selected").text();
-
-     var selecteddrink = $("#drinktype option:selected").val();
-     var selecteddrinkText = $("#drinktype option:selected").text();
     // alert(selectedMilk);
       changeChildById();
       changeCheckboxStatus();
-      drinkBydefaultshow(selecteddrink,selecteddrinkText);
+      drinkBydefaultshow(selectedDrink,selectedDrinkText);
       milkBydefaultshow(selectedMilk,selectedMilkText);
       var  currentChild = $(".hiddenchild").val();
       childMealCategoryItem(selectedChild);
@@ -114,7 +114,7 @@
                   var changechildmeal = $(".hiddenchild").val();
                   childMealCategoryItem(changechildmeal);
                         milkBydefaultshow(selectedMilk,selectedMilkText);
-                        drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                        drinkBydefaultshow(selectedDrink,selectedDrinkText);
 
                     
             }
@@ -142,7 +142,11 @@
 
                                   $("#milkCategory"+Classdate3).html("");
                                   $("#drinkCategory"+Classdate3).html("");
-                                }
+
+
+                             
+
+                             }
                                           
                                  var currentchield = $(".hiddenchild").val();
 
@@ -151,8 +155,8 @@
                                  $(".hiddenchild").val(currentchield);
 
                                  childMealCategoryItem(currentchield);
-                                 milkBydefaultshow(selectedMilk,selectedMilkText);
-                                 drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                                                            milkBydefaultshow(selectedMilk,selectedMilkText);
+                                                            drinkBydefaultshow(selectedDrink,selectedDrinkText);
  
 
                                 }
@@ -197,7 +201,7 @@
                               childMealCategoryItem(currentchield);
                                   
                         milkBydefaultshow(selectedMilk,selectedMilkText);
-                        drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                        drinkBydefaultshow(selectedDrink,selectedDrinkText);
 
 
                                            }
@@ -287,8 +291,8 @@
 
                   var changechildmeal = $(".hiddenchild").val();
                   childMealCategoryItem(changechildmeal);
-                  milkBydefaultshow(selectedMilk,selectedMilkText);
-                  drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                        milkBydefaultshow(selectedMilk,selectedMilkText);
+                        drinkBydefaultshow(selectedDrink,selectedDrinkText);
 
                     
             }
@@ -329,8 +333,8 @@
                                  $(".hiddenchild").val(currentchield);
 
                                  childMealCategoryItem(currentchield);
-                                 milkBydefaultshow(selectedMilk,selectedMilkText);
-                                 drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                                       milkBydefaultshow(selectedMilk,selectedMilkText);
+                                       drinkBydefaultshow(selectedDrink,selectedDrinkText);
 
                                 }
 
@@ -372,8 +376,8 @@
                               
                           
                               childMealCategoryItem(currentchield);
-                              milkBydefaultshow(selectedMilk,selectedMilkText);
-                              drinkBydefaultshow(selecteddrink,selecteddrinkText);
+                                   milkBydefaultshow(selectedMilk,selectedMilkText);
+                                   drinkBydefaultshow(selectedDrink,selectedDrinkText);
 
 
                                            }
@@ -420,9 +424,9 @@
 
  function childMealCategoryItem(selectedChild){
 
- 	
+  
          var date1 =[];
- 	       $('.counterIncrement').each(function(){
+         $('.counterIncrement').each(function(){
 
                   date1.push($(this).text());
 
@@ -445,7 +449,7 @@
               {
                    
                     date2 = date1[a].split("/");
-                    date3 = date2[2]+"-"+date2[0]+"-"+date2[1];	
+                    date3 = date2[2]+"-"+date2[0]+"-"+date2[1]; 
                     Classdate3 = date2[0]+date2[1]+date2[2];
 
                   $("#monthcal"+Classdate3).html("");
@@ -453,12 +457,12 @@
                   $("#monthcalNoselection"+Classdate3).html("");
 
                ////// for selected meal     
-              	for(b=0;b<data['checkMealItemData'].length;b++)
-              	{
-              		
-              	   if(data['checkMealItemData'][b]['date'] == date3)
-              	      {
-              	       let checked = "";
+                for(b=0;b<data['checkMealItemData'].length;b++)
+                {
+                  
+                   if(data['checkMealItemData'][b]['date'] == date3)
+                      {
+                       let checked = "";
                        for(c=0;c<data['selectMealItemDataChild'].length;c++)
                        {
                         var selecteditemDate = data['selectMealItemDataChild'][c]['date'];
@@ -475,9 +479,9 @@
                       $("#monthcal"+Classdate3).append(html1); 
                       html1='';
                    
-              	       }
-              	   else
-              	       {
+                       }
+                   else
+                       {
                        }
                      
                       
@@ -491,10 +495,10 @@
                    
                    if(data['category'][k]['date'] == date3 && data['category'][k].categoryid != "3")
                    {
-                   	  html2+='<div class="menuCategory"><input type="hidden" name="categoryName[]" class="categoryID" value="'+data['category'][k]['categoryid']+'"><div class="menuItem">'+data['category'][k]['category']+'</div>';
+                      html2+='<div class="menuCategory"><input type="hidden" name="categoryName[]" class="categoryID" value="'+data['category'][k]['categoryid']+'"><div class="menuItem">'+data['category'][k]['category']+'</div>';
 
-                   	  for(m=0;m<data['checkCategoryItemData'].length;m++)
-                   	  {
+                      for(m=0;m<data['checkCategoryItemData'].length;m++)
+                      {
 
                          let checked223 = '';
                          for(n=0;n<data['selectCategoryItemDataChild'].length;n++)
@@ -516,7 +520,7 @@
                           html2+='<div class="menuItemSide"><input type="checkbox" class="menuItemCheckbox  sides_'+Classdate3+'" name="" id="drinks123" value='+data['checkCategoryItemData'][m]['itemid']+' '+checked223+' disabled><p class="">'+data['checkCategoryItemData'][m]['item']+'</p><img src="<?php echo $GLOBALS['img_url']; ?>dish-3.png" alt=""></div>'
                       }
                     }
-                   	  html2+='</div>';
+                      html2+='</div>';
                    
                       $("#monthcalCategory"+Classdate3).append(html2); 
                       html2='';
@@ -524,7 +528,7 @@
                    }
 
                    else
-              	   {
+                   {
                    }
 
                  }
@@ -535,7 +539,7 @@
                    if(data['selectNoMealItemDataChild'][k]['date'] == date3 &&    data['selectNoMealItemDataChild'][k]['categoryid'] == 0 &&
                      data['selectNoMealItemDataChild'][k]['categoryid'] == 0)
                    {
-                      checked123 = "checked";
+                      checked123 = "checked"
                    }
                  }
                
@@ -546,8 +550,8 @@
 
       }}}
         
- 	   });
- 	   
+     });
+     
        
     }
 
@@ -581,42 +585,25 @@
  });
 
 
+     /////////////////  code for select juice or water type
+  function  drinkBydefaultshow(drinkID,drinkName){
+      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-     /////////////////  code for select drink type
- 
-       function  drinkBydefaultshow(drinkID,drinkName){
-
-   var a,i,j,date2,dateDrink,Classdate3,date1 =[],html4='',noDrinkDate,date3 =[];
+          var a,i,j,date2,dateDrink,Classdate3,date1 =[],html5='',noDrinkDate,date3 =[];
           $('.counterIncrement').each(function(){
 
                   date1.push($(this).text());
 
            });
 
-           $(".hiddenchildDrinkStatus").val(1);
-
-           var drinkData = $('#drinkData').val();
-
+          $(".hiddenchildMilkStatus").val(1);
+         var drinkData = $('#drinkData').val();
+        
          var extraDrinkData = drinkData.split(",");
 
          var extraDrinkId = extraDrinkData[0];
          var extraDrinkName = extraDrinkData[1];
          var extraDrinkPrice = extraDrinkData[2];
-         
-
          var restDate1 = $('#restrictredDate1').val();
              restDate1=restDate1.split(",");
 
@@ -627,7 +614,6 @@
 
             Classdate3 = date2[0]+date2[1]+date2[2];
 
-            
             var deleteDrinkClass = 'div#monthcalCategory'+Classdate3;
 
 
@@ -641,6 +627,7 @@
                  
                  if(date3 === date1[a])
                  {
+                  
                    dateDrink = 'true';
                  }
             
@@ -650,42 +637,19 @@
              {
                if(drinkID != 0)
                  {
-                         html4+='<div class="menuCategory"><div class="menuItem"><input type="hidden" name="categoryName[]" class="categoryID" value="3">Drink</div><div class="menuItemSide"><input type="checkbox" class="menuCheckbox necessDrink'+Classdate3+' drink drink'+Classdate3+'" id='+Classdate3+' name="" value="'+drinkID+'" ><p class="">'+drinkName+'<span class="price" style="float:right; display:inline;color: #f03063;font-weight: bold;">$ 0.25</span></p></div><div class="menuItemSide"><input type="checkbox" class="menuCheckbox extradrink drink'+Classdate3+' extradrink'+Classdate3+'" name="" id='+Classdate3+' value="'+extraDrinkId+'"><p class="">'+extraDrinkName+'<span class="price" style="float:right; display:inline;color: #f03063;font-weight: bold;">$'+extraDrinkPrice+'</span></p></div></div>'
+                         html5+='<div class="menuCategory"><div class="menuItem"><input type="hidden" name="categoryName[]" class="categoryID" value="3">Add on Drink</div><div class="menuItemSide"><input type="checkbox" class="menuCheckbox necessDrink'+Classdate3+' drink drink'+Classdate3+'" id='+Classdate3+' name="" value="'+drinkID+'" ><p class="">'+drinkName+'<span class="price" style="float:right; display:inline;color: #f03063;font-weight: bold;">$ 0.25</span></p></div><div class="menuItemSide"><input type="checkbox" class="menuCheckbox extradrink drink'+Classdate3+' extradrink'+Classdate3+'" name="" id='+Classdate3+' value="'+extraDrinkId+'"><p class="">'+extraDrinkName+'<span class="price" style="float:right; display:inline;color: #f03063;font-weight: bold;">$'+extraDrinkPrice+'</span></p></div></div>'
                    
-                           $("#drinkCategory"+Classdate3).append(html4); 
+                           $("#drinkCategory"+Classdate3).append(html5); 
                            $('.nomeal'+Classdate3).prop('checked', false);
-                           html4='';
+                           html5='';
 
                   }
              }
             
          }
-       // });
-       };
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
+       };
 
 
       /////////////////  code for select milk type
@@ -713,7 +677,6 @@
          var restDate = $('#restrictredDate').val();
              restDate=restDate.split(",");
 
-
         for(a=0;a<date1.length;a++) 
          {
             date2 = date1[a].split("/");
@@ -737,8 +700,7 @@
             for(j=0;j<restDate.length;j++)
             {
                  noMilkDate = restDate[j].split("-");
-                 date3 = noMilkDate[1]+"/"+noMilkDate[2]+"/"+noMilkDate[0];
-
+                 date3 = noMilkDate[1]+"/"+noMilkDate[2]+"/"+noMilkDate[0]; 
                  if(date3 === date1[a])
                  {
                    dateMilk = 'true';
@@ -1000,7 +962,6 @@
 
         $(".hiddenchildMealStatus").val(0);
         $(".hiddenchildMilkStatus").val(0);
-        $(".hiddenchildDrinkStatus").val(0);
 
 
 
@@ -1319,14 +1280,6 @@ $('.btncheckout').click(function(){
           bootbox.alert("Please save your edited milk");
           exit;
        }
-
-       if($(".hiddenchildDrinkStatus").val() == 1)
-       {
-
-
-          bootbox.alert("Please save your edited Drink");
-          exit;
-       }
         
 
 
@@ -1397,7 +1350,6 @@ $('.btncheckout').click(function(){
 <input type="hidden" name="changeChildId" value="" class="hiddenchild">
 <input type="hidden" name="changeChildMealStatus" value="0" class="hiddenchildMealStatus">
 <input type="hidden" name="changeChildMilkStatus" value="0" class="hiddenchildMilkStatus">
-<input type="hidden" name="changeChildDrinkStatus" value="0" class="hiddenchildDrinkStatus">
 
 <div id="page-wrapper" style="min-height: 327px;">
      <?php if($status == 1)
@@ -1475,7 +1427,7 @@ $('.btncheckout').click(function(){
 
 
                      ////// for extra drink (juice) 
-                              $sqlextradrink = "select id, item_name,price from item where item_type ='add_on_drink' and status = 1";
+                              $sqlextradrink = "select id, item_name,price from item where item_type ='extra_drink' and status = 1 order by id desc";
                             $resultextradrink = $this->db->query($sqlextradrink)->row_array();
                             $drinkData= $resultextradrink['id'].",".$resultextradrink['item_name'].",".$resultextradrink['price'];
 
@@ -1487,13 +1439,7 @@ $('.btncheckout').click(function(){
                           <input type="hidden" id = "restrictredDate1" value="<?php echo $resDate1; ?>">
 
                          <input type="hidden" id = "milkData" value="<?php echo $milkData; ?>">
-
                         <input type="hidden" id = "drinkData" value="<?php echo $drinkData; ?>"> 
-
-
-
-
-
                        
                        <div class="row" style="display: none">
                             <div class="col-sm-8 col-sm-offset-2">
@@ -1512,26 +1458,26 @@ $('.btncheckout').click(function(){
                             </div>
                         </div> 
 
-
                       
-
+                                                
+                        
                           <div class="row" style="display: none;">
                             <div class="col-sm-8 col-sm-offset-2">
                                 <label class="col-sm-4">Drink Choice for Pizza/Hot Dog Lunch:</label>
-                                <div class="col-sm-8 smart-forms" >
+                                <div class="col-sm-8 smart-forms">
                                     <label class="field select">
-                                        <select id="drinktype" class="form-control">
-                                         
-                                            <?php for ($i = 0; $i < count($resultdrink); $i++) { ?>
-                                                <option value="<?php echo $resultdrink[$i]['id']; ?>" selected ><?php echo $resultdrink[$i]['item_name']; ?></option>
+                                       <select id="drinktype"  class="form-control">
+                                           <option value="0">Please Select</option>
+                                            <?php  for ($i = 0; $i < count($resultdrink); $i++) { ?>
+                                                <option value="<?php  echo $resultdrink[$i]['id']; ?>" selected><?php  echo $resultdrink[$i]['item_name']; ?></option>
                                             <?php } ?>
                                         </select>
-                                        <i class="arrow"></i> 
+                                        <i class="arrow"></i>  
                                     </label>
                                 </div>
                             </div>
-                        </div> 
-             
+                        </div>
+
                     </div>
                 </div></div></div></div>
 
@@ -1553,15 +1499,14 @@ $('.btncheckout').click(function(){
                   <div class="daysGrid">Friday</div>
               </div>
 <?php
-        // echo $start_Date . "<br>";
+
         $dateStart = date("Y-m-d", strtotime($start_Date));
-        // echo $dateStart;
+
 
         $dateEnd = date("Y-m-d", strtotime($end_date));
    //echo $dateEnd; die;
 
         $dayDate= date("d", strtotime($dateStart));
-      
         $monthCal= date("m", strtotime($dateStart));
         $yearCal= date("Y", strtotime($dateStart));
 
@@ -1576,52 +1521,44 @@ $('.btncheckout').click(function(){
   <div class="gridd" style="position: relative; height: 3020.42px;">
  
      <?php 
-	       for($ii=1;$ii<10;$ii++)
-		   {   
-			 for($j=1;$j< 7; $j++)
-				 { 
-     			
+         for($ii=1;$ii<10;$ii++)
+       {   
+       for($j=1;$j< 7; $j++)
+         { 
+          
 
                            $date = $monthCal."/".$dayDate."/".$yearCal;
-
                            $classdate1=$monthCal.$dayDate.$yearCal;
                            //  echo $classdate1; die;
                            $day = date('l', strtotime($date));
-                            
+                   
                            $day_number = intval(date('N', strtotime($date)));
                            // echo var_dump($day); die;
 
                            $EndDate = date("Y-m-d", strtotime($end_date));
                            $DateLast = date("d", strtotime($dateEnd));
-                           
                          //   echo $day; die;
-
-
-
-
-      if($day == "Saturday")
-       {
-          // echo $day;
+                          if($day == "Saturday")
+                          { 
                            
-                            $dayDate = $dayDate + 2;
-
+                               $dayDate = $dayDate + 2;
                                if(1 < 2 && $dayDate < 10)
-			                     {
-			                        $dayDate = '0'.$dayDate;
-                              
-			                      }
+                           {
+                              $dayDate = '0'.$dayDate;
+                            }
                                break;
                               
                               
-       }
-
+                          }
 
 
        else if($day == "Sunday")
        {
 
-                            $dayDate = $dayDate + 1;
-                           if(count($dayDate) <= 2 && $dayDate < 10)
+    $dayDate = $dayDate + 1;
+
+  //  echo $dayDate; die;
+                               if(1 <= 2 && $dayDate < 10)
                            {
                               $dayDate = '0'.$dayDate;
                             }
@@ -1629,40 +1566,34 @@ $('.btncheckout').click(function(){
        }
 
 
-
-
-
-
-
-          else 
-              {
+                          else 
+                          {
                         
                               if($j == $day_number)
                              {
-                          	     $hh='';
+                                 $hh='';
                                  $hh.='<div class="gridd-item" id="grid'.$classdate1.'" style="position: absolute; left: 0px; top: 0px;">';
 
                                  
-			                     $hh.='<div class="counterIncrement">'.$date;
-			                     
+                           $hh.='<div class="counterIncrement">'.$date;
+                           
 
-			                            if($dayDate > $DateLast)
-			                             {
-			                             	break;
-			                             } 
-						                    $dayDate++;  
+                                  if($dayDate > $DateLast)
+                                   {
+                                    break;
+                                   } 
+                                $dayDate++;  
 
-			                            if(1 < 2 && $dayDate < 10)
-			                            {
-			                               $dayDate = '0'.$dayDate;
-                                     
-			                            }
-			                    
+                                  if(1 < 2 && $dayDate < 10)
+                                  {
+                                     $dayDate = '0'.$dayDate;
+                                  }
+                           // echo $dayDate;
 
-				                  $hh.='</div>';
-				                  $hh.='<div id="monthcal'.$classdate1.'" class="mealBG mealInsertData"></div>';
+                          $hh.='</div>';
+                          $hh.='<div id="monthcal'.$classdate1.'" class="mealBG mealInsertData"></div>';
 
-				                  $hh.='<div id="monthcalCategory'.$classdate1.'" class="mealBG mealSides mealSidesInsertData"></div>';
+                          $hh.='<div id="monthcalCategory'.$classdate1.'" class="mealBG mealSides mealSidesInsertData"></div>';
 
                           $hh.='<div id="milkCategory'.$classdate1.'" class=" mealBG mealSides mealMilkInsertData"></div>';
 
@@ -1673,17 +1604,15 @@ $('.btncheckout').click(function(){
                                  echo $hh;
                               }
 
-
-
                                else { ?>
 
                                  <div class="gridd-item" style="position: absolute; left: 0px; top: 0px;">
-                          	     </div>
+                                 </div>
 
                              <?php }
 
 
-                          	}
+                            }
 
                      }
                  }

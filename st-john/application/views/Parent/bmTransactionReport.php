@@ -10,10 +10,6 @@
         dom: 'lBfrtip',
         buttons: [
             'print'
-        ],
-        lengthMenu: [
-            [ 100, 250, 500, -1 ],
-            [ '100', '250', '500', 'Show all' ]
         ]
     });
   
